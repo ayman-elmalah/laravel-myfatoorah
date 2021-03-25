@@ -1,0 +1,36 @@
+{
+    "name": "ayman-elmalah/laravel-myfatoorah",
+    "description": "My fatoorah api wrapper ",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ayman Elmalah",
+            "email": "aymanelmalah77@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4|^8.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "guzzlehttp/guzzle": "^6.0|^7.0",
+        "illuminate/http": "^6.0|^7.0|^8.0",
+        "illuminate/support": "^6.0|^7.0|^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "AymanElmalah\\MyFatoorah\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AymanElmalah\\MyFatoorah\\MyFatoorahServiceProvider"
+            ],
+            "aliases": {
+                "MyFatoorah": "AymanElmalah\\MyFatoorah\\Facades\\MyFatoorah"
+            }
+        }
+    }
+}
