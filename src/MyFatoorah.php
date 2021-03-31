@@ -23,14 +23,18 @@ class MyFatoorah extends Service
         try {
             $this->endpoint = 'SendPayment';
 
+            /** @var Illuminate\Http\Client\Response $response  */
+
             $response = $this->getClient()->post($this->getFullIUrl(), $data);
+
         } catch(\Exception $exception) {
             throw new \Exception($exception->getMessage());
         }
 
-        if(! $response->successful()) {
-            throw new \Exception("Something went wrong");
-        }
+        throw_unless(
+                $response->successful(),
+                $response->throw()
+            );
 
         return $response->json();
     }
