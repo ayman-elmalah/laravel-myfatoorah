@@ -23,7 +23,7 @@ class MyFatoorah extends Service
         try {
             $this->endpoint = 'SendPayment';
 
-            $response = $this->getClient()->post($this->getFullIUrl(), $data);
+            $response = $this->getClient()->post($this->getFullUrl(), $data);
         } catch(\Exception $exception) {
             throw new \Exception($exception->getMessage());
         }
@@ -47,7 +47,7 @@ class MyFatoorah extends Service
         try {
             $this->endpoint = 'GetPaymentStatus';
 
-            $this->payment = $this->getClient()->post($this->getFullIUrl(), [
+            $this->payment = $this->getClient()->post($this->getFullUrl(), [
                 'KeyType' => 'PaymentId',
                 'Key' => $payment_id,
             ]);
