@@ -30,7 +30,7 @@ and modify the config file with your own information. File is located in `/confi
 MYFATOORAH_MODE=test
 MYFATOORAH_TOKEN=token
  ```
-or you can add it using setAccessToken()->setMode()
+or you can add it using `setAccessToken($token?)->setMode($mode?)`
 
 You are now ready to use the package
 
@@ -63,15 +63,15 @@ At the controller, you can get the data from payment page at [DOCS](https://myfa
         'ErrorUrl' => 'https://yourdomain.test/error',
     ];
 
-// This one if you need to set credentials on the fly
+// If you want to set the credentials and the mode manually.
 //    $myfatoorah = MyFatoorah::setAccessToken($token)->setMode('test')->createInvoice($data);
 
 // And this one if you need to access token from config
     $myfatoorah = MyFatoorah::createInvoice($data);
 
-/ Here you will be response with invoice id and invoice url, you can redirect user to this page
-    return response()->json($myfatoorah);
-   }
+  // when you got a response from myFatoorah API, you can redirect the user to the myfatoorah portal 
+  return response()->json($myfatoorah);
+}
  ```
 ## Get callback to check if success payment
   ```
@@ -95,5 +95,16 @@ At the controller, you can get the data from payment page at [DOCS](https://myfa
   }
   ```
 
-# If you have any question, issue Or request, i'll be happy if hear any thing from you
-   
+## Authors
+
+* **Ayman Elmalah** - *Initial work* - [ayman-elmalah](https://github.com/ayman-elmalah)
+
+See also the list of [contributors](https://github.com/ayman-elmalah/laravel-myfatoorah/graphs/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* If yo have any questions, issues or PRs feel free to contact me.

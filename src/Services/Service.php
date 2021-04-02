@@ -208,7 +208,7 @@ abstract class Service
      * @return string
      * @throws \Exception
      */
-    public function getFullIUrl() {
+    public function getFullUrl() {
         return $this->getBasePath() . $this->getEndPoint();
     }
 }
