@@ -12,7 +12,7 @@ At laravel project install package using composer
 ```
 composer require ayman-elmalah/laravel-myfatoorah
 ```
-The package is compatible with laravel ^6.0|^7.0|^8.0 so you don't need to set providers or aliases for the package, we're using laravel auto discovery
+The package is compatible with laravel ^6.0|^7.0|^8.0|^9.0 so you don't need to set providers or aliases for the package, we're using laravel auto discovery
 
 ## Configuration
 To publish config run
