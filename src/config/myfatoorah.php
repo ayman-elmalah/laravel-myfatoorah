@@ -4,12 +4,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Myfatoorah mode
+    | MyFatoorah Mode
     |--------------------------------------------------------------------------
     |
-    | This option controls the mode for myfatoorah service
+    | This option controls the mode for MyFatoorah service
     |
-    | Supported: "session", "token"
+    | Supported: "test", "live"
     |
     */
 
@@ -17,10 +17,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Myfatoorah token
+    | MyFatoorah Token
     |--------------------------------------------------------------------------
     |
-    | This option controls the token for myfatoorah service
+    | This option controls the token for MyFatoorah service
     |
     */
 
