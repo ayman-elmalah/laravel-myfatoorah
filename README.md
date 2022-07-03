@@ -40,7 +40,7 @@ You can get test cards from [DOCS](https://myfatoorah.readme.io/docs/test-cards)
 ### Usage examples
 
 Create payment page
- ```
+ ```php
 Route::get('payment', [\App\Http\Controllers\MyFatoorahController::class, 'index']);
 Route::get('payment/callback', [\App\Http\Controllers\MyFatoorahController::class, 'callback']);
 Route::get('payment/error', [\App\Http\Controllers\MyFatoorahController::class, 'error']);
@@ -74,7 +74,7 @@ At the controller, you can get the data from payment page at [DOCS](https://myfa
 }
  ```
 ## Get callback to check if success payment
-  ```
+  ```php
   public function callback(Request $request) {
      $myfatoorah = MyFatoorah::payment($request->paymentId);
 
@@ -88,7 +88,7 @@ At the controller, you can get the data from payment page at [DOCS](https://myfa
 
 ## Error page
 
-  ```
+  ```php
   public function error(Request $request) {
      // Show error actions
      return response()->json(['status' => 'fail']);
