@@ -59,8 +59,8 @@ At the controller, you can get the data from payment page at [DOCS](https://myfa
         'CustomerEmail' => 'test@test.test',
         'InvoiceValue' => '100',
         'Language' => 'en',
-        'CallBackUrl' => 'https://yourdomain.test/callback',
-        'ErrorUrl' => 'https://yourdomain.test/error',
+        'CallBackUrl' => 'https://yourdomain.test/payment/callback',
+        'ErrorUrl' => 'https://yourdomain.test/payment/error',
     ];
 
 // If you want to set the credentials and the mode manually.
