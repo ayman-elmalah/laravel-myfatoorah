@@ -46,7 +46,7 @@ Route::get('payment/callback', [\App\Http\Controllers\MyFatoorahController::clas
 Route::get('payment/error', [\App\Http\Controllers\MyFatoorahController::class, 'error']);
  ```
 At the controller, you can get the data from payment page at [DOCS](https://myfatoorah.readme.io/docs/send-payment-offsite)
- ```php
+ ```
  use AymanElmalah\MyFatoorah\Facades\MyFatoorah;
  
  public function index() {
@@ -72,9 +72,9 @@ At the controller, you can get the data from payment page at [DOCS](https://myfa
   // when you got a response from myFatoorah API, you can redirect the user to the myfatoorah portal 
   return response()->json($myfatoorah);
 }
- ```php
+ ```
 ## Get callback to check if success payment
-  ```
+  ```php
   public function callback(Request $request) {
      $myfatoorah = MyFatoorah::payment($request->paymentId);
 
