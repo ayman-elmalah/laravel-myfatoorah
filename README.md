@@ -40,13 +40,13 @@ You can get test cards from [DOCS](https://myfatoorah.readme.io/docs/test-cards)
 ### Usage examples
 
 Create payment page
- ```
+ ```php
 Route::get('payment', [\App\Http\Controllers\MyFatoorahController::class, 'index']);
 Route::get('payment/callback', [\App\Http\Controllers\MyFatoorahController::class, 'callback']);
 Route::get('payment/error', [\App\Http\Controllers\MyFatoorahController::class, 'error']);
  ```
 At the controller, you can get the data from payment page at [DOCS](https://myfatoorah.readme.io/docs/send-payment-offsite)
- ```
+ ```php
  use AymanElmalah\MyFatoorah\Facades\MyFatoorah;
  
  public function index() {
@@ -72,7 +72,7 @@ At the controller, you can get the data from payment page at [DOCS](https://myfa
   // when you got a response from myFatoorah API, you can redirect the user to the myfatoorah portal 
   return response()->json($myfatoorah);
 }
- ```
+ ```php
 ## Get callback to check if success payment
   ```
   public function callback(Request $request) {
@@ -88,7 +88,7 @@ At the controller, you can get the data from payment page at [DOCS](https://myfa
 
 ## Error page
 
-  ```
+  ```php
   public function error(Request $request) {
      // Show error actions
      return response()->json(['status' => 'fail']);
