@@ -9,7 +9,7 @@ return [
     |
     | This option controls the mode for MyFatoorah service
     |
-    | Supported: "test", "live"
+    | Supported: "test", "live", "live-sa"
     |
     */
 

@@ -75,7 +75,8 @@ abstract class Service
     /**
      * Set header
      *
-     * @param array $header
+     * @param $key
+     * @param $value
      * @return $this
      */
     protected function setHeader($key, $value)
@@ -88,7 +89,7 @@ abstract class Service
     /**
      * Get headers
      *
-     * @return array
+     * @return array|mixed
      */
     protected function getHeaders()
     {
@@ -98,15 +99,18 @@ abstract class Service
     /**
      * Set base path
      *
+     * @return void
      * @throws \Exception
      */
     protected function setBasePath()
     {
-        if(! in_array($this->getMode(), ['test', 'live'])) {
-            throw new \Exception("Mode is not supported, supported are : test and live");
+        $availableModes = $this->availableModes();
+
+        if(! array_key_exists($this->getMode(), $availableModes)) {
+            throw new \Exception("Mode is not supported, supported are : " . implode(',', array_keys($availableModes)));
         }
 
-        $this->basePath = $this->getMode() == "live" ? "https://api.myfatoorah.com/v2/" : "https://apitest.myfatoorah.com/v2/";
+        $this->basePath = data_get($availableModes, $this->getMode().'.base_path');
     }
 
     /**
@@ -164,8 +168,10 @@ abstract class Service
      */
     public function setMode($mode = null)
     {
-        if($mode != null && ! in_array($mode, ['test', 'live'])) {
-            throw new \Exception("Mode is not supported, supported are : test and live");
+        $availableModes = $this->availableModes();
+
+        if($mode != null && ! array_key_exists($this->getMode(), $availableModes)) {
+            throw new \Exception("Mode is not supported, supported are : " . implode(',', array_keys($availableModes)));
         }
 
         if($this->mode == null) {
@@ -210,5 +216,18 @@ abstract class Service
      */
     public function getFullUrl() {
         return $this->getBasePath() . $this->getEndPoint();
+    }
+
+    /**
+     * Available modes
+     *
+     * @return array
+     */
+    private function availableModes() {
+        return [
+            'test'      => ['base_path' => 'https://apitest.myfatoorah.com/v2/'],
+            'live'      => ['base_path' => 'https://api.myfatoorah.com/v2/'],
+            'live-sa'   => ['base_path' => 'https://api-sa.myfatoorah.com/v2/'],
+        ];
     }
 }

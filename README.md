@@ -25,6 +25,7 @@ and modify the config file with your own information. File is located in `/confi
 - Go to [My fatorah](https://www.myfatoorah.com/)
 - You will get access token
 - Go to your .env file and paste your credentials to be like this
+- MYFATOORAH_MODE options ["test", "live", "live-sa"]
 
  ```
 MYFATOORAH_MODE=test
