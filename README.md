@@ -107,14 +107,14 @@ At the controller, you can get the data from payment page at [DOCS](https://myfa
  
  public function refund() {
       $data = [
-        'KeyType" => 'invoiceid',     // can be invoiceid or PaymentId
-        'Key" => '94272',             // key value like payment reference id, you can got it from the $request->paymentId in callback function 
+        'KeyType' => 'invoiceid',     // can be invoiceId or PaymentId
+        'Key' => '94272',             // key value like payment reference id, you can got it from the $request->paymentId in callback function 
         'RefundChargeOnCustomer' => false,
         'ServiceChargeOnCustomer' => false,
         'Amount' => 210,
         'Comment' => 'Refund',
         'AmountDeductedFromSupplier' => 0
-    ];
+      ];
 
     // If you want to set the credentials and the mode manually.
     // $myfatoorah = MyFatoorah::setAccessToken($token)->setMode('test')->refundInvoice($data);

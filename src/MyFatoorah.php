@@ -104,11 +104,6 @@ class MyFatoorah extends Service
             throw new \Exception($exception->getMessage());
         }
 
-        throw_unless(
-            $response->successful(),
-            $response->throw()
-        );
-
         return $response->json();
     }
 }
