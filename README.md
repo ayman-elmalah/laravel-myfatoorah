@@ -6,9 +6,10 @@ laravel myfatoorah is a php package written by [Ayman Elmalah](https://github.co
 - Returning payments
 - Check that payment is success or not
 - Change the token on the fly
+- Refund invoice
 
 # Installation Guide
-At laravel project install package using composer
+Composer installation
 ```
 composer require ayman-elmalah/laravel-myfatoorah
 ```
@@ -22,7 +23,7 @@ php artisan vendor:publish --provider="AymanElmalah\MyFatoorah\MyFatoorahService
 and modify the config file with your own information. File is located in `/config/myfatoorah.php`
 
 ## Get Your Credentials From Myfatoorah
-- Go to [My fatorah](https://www.myfatoorah.com/)
+- Go to [My fatoorah](https://www.myfatoorah.com/)
 - You will get access token
 - Go to your .env file and paste your credentials to be like this
 - MYFATOORAH_MODE options ["test", "live", "live-sa"]
@@ -46,7 +47,7 @@ Route::get('payment', [\App\Http\Controllers\MyFatoorahController::class, 'index
 Route::get('payment/callback', [\App\Http\Controllers\MyFatoorahController::class, 'callback']);
 Route::get('payment/error', [\App\Http\Controllers\MyFatoorahController::class, 'error']);
  ```
-At the controller, you can get the data from payment page at [DOCS](https://myfatoorah.readme.io/docs/send-payment-offsite)
+At the controller, you can get the data from payment page at [DOCS](https://myfatoorah.readme.io/docs/send-payment)
  ```
  use AymanElmalah\MyFatoorah\Facades\MyFatoorah;
  
@@ -95,6 +96,36 @@ At the controller, you can get the data from payment page at [DOCS](https://myfa
      return response()->json(['status' => 'fail']);
   }
   ```
+
+Refund payment
+ ```
+Route::get('reund', [\App\Http\Controllers\MyFatoorahController::class, 'refund']);
+ ```
+At the controller, you can get the data from payment page at [DOCS](https://myfatoorah.readme.io/docs/make-refund)
+ ```
+ use AymanElmalah\MyFatoorah\Facades\MyFatoorah;
+ 
+ public function refund() {
+      $data = [
+        'KeyType" => 'invoiceid',     // can be invoiceid or PaymentId
+        'Key" => '94272',             // key value like payment reference id, you can got it from the $request->paymentId in callback function 
+        'RefundChargeOnCustomer' => false,
+        'ServiceChargeOnCustomer' => false,
+        'Amount' => 210,
+        'Comment' => 'Refund',
+        'AmountDeductedFromSupplier' => 0
+    ];
+
+    // If you want to set the credentials and the mode manually.
+    // $myfatoorah = MyFatoorah::setAccessToken($token)->setMode('test')->refundInvoice($data);
+
+    // And this one if you need to access token from config
+    $myfatoorah = MyFatoorah::refundInvoice($data);
+
+    // You can check the output
+    return response()->json($myfatoorah);
+}
+ ```
 
 ## Authors
 

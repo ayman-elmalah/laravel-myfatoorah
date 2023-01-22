@@ -83,4 +83,32 @@ class MyFatoorah extends Service
 
         return (data_get($response, 'IsSuccess') != true || data_get($response, 'Data.InvoiceStatus') != 'Paid') ? false : true;
     }
+
+    /**
+     * Refund invoice
+     *
+     * @param array $data
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     */
+    public function refundInvoice($data = [])
+    {
+        try {
+            $this->endpoint = 'MakeRefund';
+
+            /** @var Illuminate\Http\Client\Response $response  */
+
+            $response = $this->getClient()->post($this->getFullUrl(), $data);
+
+        } catch(\Exception $exception) {
+            throw new \Exception($exception->getMessage());
+        }
+
+        throw_unless(
+            $response->successful(),
+            $response->throw()
+        );
+
+        return $response->json();
+    }
 }
